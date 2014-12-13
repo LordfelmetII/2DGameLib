@@ -1,0 +1,27 @@
+package com.lordfelmet.GameLib.input;
+
+import java.lang.reflect.Method;
+import java.util.HashSet;
+import java.util.Set;
+
+
+public abstract class BoundInput {
+	public Set<Method> methods = new HashSet();
+	public BoundInput(Class<?> inputRegistry, Set<String> methodNames){
+	     
+		for(String name : methodNames)
+			try {
+				methods.add(inputRegistry.getMethod(name, null));
+			} catch (NoSuchMethodException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SecurityException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	}
+	
+	public void action(){
+		
+	}
+}

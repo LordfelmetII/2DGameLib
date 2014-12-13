@@ -1,0 +1,52 @@
+package com.lordfelmet.GameLib.input;
+
+
+import static org.reflections.ReflectionUtils.getAllMethods;
+
+import java.awt.event.InputEvent;
+import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
+import org.reflections.ReflectionUtils;
+import org.reflections.Reflections;
+
+
+public abstract class InputBinder {
+	
+	protected Map<InputEvent, BoundInput> inputs = new HashMap<InputEvent, BoundInput>();
+	protected Set<BoundInput> bindings = new HashSet<BoundInput>();
+	
+	
+	public InputBinder(String workspace){
+		findMethods(workspace);
+	}
+		
+	public Method[] findMethods(String workspace){
+		Reflections reflections = new Reflections(workspace);
+
+	     Set<Class<?>> annotated = 
+	               reflections.getTypesAnnotatedWith(InputRegistry.class);
+	     for( Class<?> registry : annotated){
+	    	 	
+	    		Set<Method> methods = getAllMethods(registry, ReflectionUtils.withPrefix("doWhen"), ReflectionUtils.withParametersCount(0)); 
+	    		return (Method[]) methods.toArray();
+	     }
+		return null; 
+	}
+	
+	private void addInput(Method m){
+		//bindings.add(new BoundInput(m));
+	}
+	
+	
+	public void bindInput(InputEvent key, BoundInput value){
+		inputs.put(key, value);
+	}
+	public BoundInput getBinding(InputEvent key){
+		return ((BoundInput)inputs.get(key));
+	}
+	
+}

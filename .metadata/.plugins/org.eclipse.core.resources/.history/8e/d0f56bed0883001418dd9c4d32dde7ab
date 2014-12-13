@@ -1,0 +1,16 @@
+package com.lordfelmet.GameLib.input;
+
+import java.lang.reflect.Modifier;
+import static org.reflections.ReflectionUtils.*;
+
+
+public abstract class BoundInput {
+	
+	public BoundInput(Class inputRegistry){
+		;
+	}
+	
+	public void action(){
+		
+	}
+}

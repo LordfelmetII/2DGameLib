@@ -1,0 +1,19 @@
+package com.lordfelmet.GameLib.input;
+
+import java.awt.event.InputEvent;
+import java.util.HashMap;
+import java.util.Map;
+
+public abstract class InputBinder {
+	
+	protected Map<InputEvent, BoundInput> inputs = new HashMap<InputEvent, BoundInput>();
+	
+	public void bindInput(InputEvent key,BoundInput value){
+		inputs.put(key, value);
+	}
+	public BoundInput getBinding(InputEvent key){
+		return ((BoundInput)inputs.get(key));
+	}
+	
+	
+}

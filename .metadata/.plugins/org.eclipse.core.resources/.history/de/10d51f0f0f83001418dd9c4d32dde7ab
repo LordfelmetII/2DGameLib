@@ -1,0 +1,7 @@
+package com.lordfelmet.GameLib.input.keys;
+
+import com.lordfelmet.GameLib.input.BoundInput;
+
+public class BoundKey extends BoundInput {
+
+}

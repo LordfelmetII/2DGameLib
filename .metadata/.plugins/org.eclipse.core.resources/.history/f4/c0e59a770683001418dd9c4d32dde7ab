@@ -1,0 +1,10 @@
+package com.lordfelmet.GameLib.input;
+
+public abstract class BoundInput {
+	
+	
+	
+	public void action(){
+		
+	}
+}

@@ -1,0 +1,14 @@
+package com.lordfelmet.GameLib.input;
+
+import org.reflections.ReflectionUtils;
+
+public abstract class BoundInput {
+	
+	public BoundInput(Class inputRegistry){
+		inputRegistry.getMethods(null, ReflectionUtils.withPrefix("doWhen"));
+	}
+	
+	public void action(){
+		
+	}
+}
